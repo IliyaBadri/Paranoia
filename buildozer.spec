@@ -119,10 +119,10 @@ android.ndk_api = 21
 #android.private_storage = True
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
-android.ndk_path = /home/anon/Desktop/apps/android-ndk/android-ndk-r23c/
+android.ndk_path = ~/Desktop/apps/android-ndk/android-ndk-r23c/
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
-android.sdk_path = /home/anon/Desktop/apps/android-sdk/
+android.sdk_path = ~/Desktop/apps/android-sdk/
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
 #android.ant_path =
