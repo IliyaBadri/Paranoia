@@ -1,3 +1,4 @@
+import time
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.scrollview import ScrollView
@@ -22,17 +23,18 @@ class ParanoiaApp(App):
         
         self.layout = BoxLayout(
             orientation='vertical', 
-            size_hint_y=None,
+            size_hint_y=2,
             size_hint_x=1,
             padding=10, 
             spacing=20
             )
+
         self.layout.bind(minimum_height=self.layout.setter('height'))
         self.scroll_view.add_widget(self.layout)
 
         self.title_lable = Label(
             text=f'{APP_NAME} - {APP_VERSION}',
-            size_hint_y=None,
+            size_hint_y=0.05,
             size_hint_x=1,
         )
         self.layout.add_widget(self.title_lable)
@@ -41,40 +43,43 @@ class ParanoiaApp(App):
             hint_text='Enter encryption password', 
             multiline=False,
             password=True,
-            size_hint_y=None, 
-            height=100
+            size_hint_y=0.05
             )
         self.layout.add_widget(self.key_input)
 
         self.text_input = TextInput(
             hint_text='Plain text',
-            size_hint_y=None, 
-            height=400
+            size_hint_y=0.15
             )
         self.layout.add_widget(self.text_input)
 
         self.encrypt_button = Button(
             text='Encrypt',
-            size_hint_y=None, 
-            height=120
+            size_hint_y=0.05
             )
         self.encrypt_button.bind(on_press=self.handle_encrypt)
         self.layout.add_widget(self.encrypt_button)
 
         self.decrypt_button = Button(
             text='Decrypt',
-            size_hint_y=None, 
-            height=120
+            size_hint_y=0.05
             )
         self.decrypt_button.bind(on_press=self.handle_decrypt)
         self.layout.add_widget(self.decrypt_button)
 
         self.encrypted_text_input = TextInput(
             hint_text='Encrypted text',
-            size_hint_y=None, 
-            height=400
+            size_hint_y=0.15
             )
         self.layout.add_widget(self.encrypted_text_input)
+
+        self.dummy_layout = BoxLayout(
+            orientation='vertical', 
+            size_hint_y=1,
+            size_hint_x=1
+            )
+        
+        self.layout.add_widget(self.dummy_layout)
 
         return self.scroll_view
     
@@ -84,8 +89,8 @@ class ParanoiaApp(App):
         self.popup = Popup(
             title=title, 
             content=alert_label,
-            size_hint=(None, None), 
-            size=(800, 400),
+            size_hint_x=0.9, 
+            size_hint_y=0.5,
             auto_dismiss=True
             )
         self.popup.open()
